@@ -13,8 +13,67 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <ion-input label="Ingrese el id a buscar" type="number" name="id" [(ngModel)]="idABuscar"placeholder="000"></ion-input>
+      </ion-item>
+    
+      <ion-button (click)="getPokemonDataID(idABuscar)">Ver pokemon</ion-button>
+    </ion-card-header>
+    <ion-card-title>
+{{pokemon}}
+    </ion-card-title>
+    <img [src]="pokemonImg">
+  </ion-card>
+
+
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <ion-input label="Ingrese el nombre a buscar" type="text" name="nombre" [(ngModel)]="nombreABuscar"placeholder="000"></ion-input>
+      </ion-item>
+    
+      <ion-button (click)="getPokemonDataName(nombreABuscar)">Ver pokemon</ion-button>
+    </ion-card-header>
+    <ion-card-title>
+{{idPokemon}}
+    </ion-card-title>
+    <img [src]="pokemonImg2">
+  </ion-card>
+
+
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <ion-input label="Ingrese el id a buscar del Item" type="number" name="idI" [(ngModel)]="idABuscarItem"placeholder="000"></ion-input>
+      </ion-item>
+    
+      <ion-button (click)="getItemDataId(idABuscarItem)">Ver pokemon</ion-button>
+    </ion-card-header>
+    <ion-card-title>
+{{item}}
+    </ion-card-title>
+    <img [src]="ItemImg">
+  </ion-card>
+
+
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <ion-input label="Ingrese el nombre a buscar del item" type="text" name="nameI" [(ngModel)]="nombreABuscarItem"placeholder="000"></ion-input>
+      </ion-item>
+    
+      <ion-button (click)="getItemDataName(nombreABuscarItem)">Ver pokemon</ion-button>
+    </ion-card-header>
+    <ion-card-title>
+{{idItem}}
+    </ion-card-title>
+    <img [src]="ItemImg2">
+  </ion-card>
 </ion-content>
