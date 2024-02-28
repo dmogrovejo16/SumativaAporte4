@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
 import { APIServiceService } from './../Services/apiservice.service';
 import { HttpClient } from '@angular/common/http';
+import { Firestore } from '@angular/fire/firestore';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+color:any;
+tipo:any;
+color2:any;
+tipo2:any;
+
   isDisabled1:boolean=true;
   isDisabled2:boolean=true;
   isDisabled3:boolean=true;
@@ -27,7 +33,12 @@ export class HomePage {
   idItem:number | undefined;
   idPokemon:number | undefined;
 
-  constructor(private api: APIServiceService, private http: HttpClient) {}
+type:any;
+type2:any;
+
+  constructor(private api: APIServiceService,private db:Firestore, private http: HttpClient) {}
+
+
   getPokemonDataID(id: number) {
     try {
       let idABuscar;
@@ -36,6 +47,8 @@ export class HomePage {
       this.api.getPokemonID(this.idABuscar).subscribe((response => {
         // Dentro de la función de éxito de la suscripción:
         // Asigna el nombre del Pokémon a la variable local 'pokemon'.
+   
+  
         this.pokemon = response.name;
         this.isDisabled1=false;
         this.pokemonName=response.name;
@@ -46,9 +59,66 @@ localStorage.setItem("id", id+"");
 localStorage.setItem("abilities", response.abilities);
 localStorage.setItem("experience", response.base_experience);
 localStorage.setItem("height", response.height);
+this.type=response.types[0].type.name;
+if(this.type=="fire"){
+  this.color="red";
+  this.tipo="fuego";
+}else if (this.type=="grass"){
+  this.color="green";
+  this.tipo="planta";
+}else if (this.type=="bug"){
+  this.color="purple";
+  this.tipo="insecto";
 
+}else if (this.type=="water"){
+  this.color="blue";
+  this.tipo="agua";
+}else if (this.type=="steel"){
+  this.color="gray";
+  this.tipo="hierro";
+}else if (this.type=="dragon"){
+  this.color="orange";
+  this.tipo="dragon";
+}else if (this.type=="fairy"){
+  this.color="lightblue";
+  this.tipo="hada";
+}else if (this.type=="ice"){
+  this.color="skyblue";
+  this.tipo="hielo";
+}else if (this.type=="fight"){
+  this.color="brown";
+  this.tipo="lucha";
+}else if (this.type=="psychic"){
+  this.color="aqua";
+  this.tipo="psiquico";
+}else if (this.type=="rock"){
+  this.color="brown";
+  this.tipo="piedra";
+}else if (this.type=="dark"){
+  this.color="darkgrey";
+  this.tipo="oscuro";
+}else if (this.type=="flying"){
+  this.color="gold";
+  this.tipo="volador";
+}else if (this.type=="poison"){
+  this.color="plum";
+  this.tipo="veneno";
+}else if (this.type=="electric"){
+  this.color="yellow";
+  this.tipo="electrico";
+}else if (this.type=="ghost"){
+  this.color="white";
+  this.tipo="fantasma";
+}else if (this.type=="normal"){
+  this.color="lightcoral";
+  this.tipo="normal";
+}else{
+  this.tipo="No hay :("
+  this.color="cyan";
+}
         // Imprime el nombre del Pokémon en la consola.
         console.log(this.pokemon);
+        console.log(response.types[0].type.name);
 
       }));
 
@@ -75,6 +145,63 @@ localStorage.setItem("height", response.height);
        this.pokemonName=response2.name;
        localStorage.setItem("name", this.pokemonName);
 
+       this.type=response2.types[0].type.name;
+       if(this.type=="fire"){
+         this.color2="red";
+         this.tipo2="fuego";
+       }else if (this.type=="grass"){
+         this.color2="green";
+         this.tipo2="planta";
+       }else if (this.type=="bug"){
+         this.color2="purple";
+         this.tipo2="insecto";
+       
+       }else if (this.type=="water"){
+         this.color2="blue";
+         this.tipo2="agua";
+       }else if (this.type=="steel"){
+         this.color2="gray";
+         this.tipo2="hierro";
+       }else if (this.type=="dragon"){
+         this.color2="orange";
+         this.tipo2="dragon";
+       }else if (this.type=="fairy"){
+         this.color2="lightblue";
+         this.tipo2="hada";
+       }else if (this.type=="ice"){
+         this.color2="skyblue";
+         this.tipo2="hielo";
+       }else if (this.type=="fight"){
+         this.color2="brown";
+         this.tipo2="lucha";
+       }else if (this.type=="psychic"){
+         this.color2="aqua";
+         this.tipo2="psiquico";
+       }else if (this.type=="rock"){
+         this.color2="brown";
+         this.tipo2="piedra";
+       }else if (this.type=="dark"){
+         this.color2="darkgrey";
+         this.tipo2="oscuro";
+       }else if (this.type=="flying"){
+         this.color2="gold";
+         this.tipo2="volador";
+       }else if (this.type=="poison"){
+         this.color2="plum";
+         this.tipo2="veneno";
+       }else if (this.type=="electric"){
+         this.color2="yellow";
+         this.tipo2="electrico";
+       }else if (this.type=="ghost"){
+         this.color2="white";
+         this.tipo2="fantasma";
+       }else if (this.type=="normal"){
+         this.color2="lightcoral";
+         this.tipo2="normal";
+       }else{
+         this.tipo2="No hay :("
+         this.color2="cyan";
+       }
 this.pokemonImg2="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + id + '.png';
 localStorage.setItem("img", this.pokemonImg2);
 localStorage.setItem("id", response2.id);
@@ -82,7 +209,7 @@ localStorage.setItem("abilities", response2.abilities);
 localStorage.setItem("experience", response2.base_experience);
 localStorage.setItem("height", response2.height);
         // Imprime el nombre del Pokémon en la consola.
-        console.log(this.pokemon);
+        console.log(this.type);
 
       }));
 

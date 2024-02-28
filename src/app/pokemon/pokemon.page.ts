@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { APIServiceService } from '../Services/apiservice.service';
+import { Firestore } from 'firebase/firestore';
 
 @Component({
   selector: 'app-pokemon',
@@ -15,7 +16,7 @@ txtt:string=" ";
 experience:any;
 img:any;
 id:any;
-  constructor(private api: APIServiceService) { }
+  constructor(private api: APIServiceService, private db:Firestore) { }
 
   ngOnInit() {
     this.pokemonName=localStorage.getItem("name")?.toUpperCase();
@@ -26,7 +27,6 @@ id:any;
     this.img=localStorage.getItem("img");
     this.id=localStorage.getItem("id");
 
-      // Captura cualquier error que pueda ocurrir durante la suscripción y lo imprime en la consola.
     
 
   }

@@ -36,13 +36,13 @@
       </ion-item>
     
       <ion-button (click)="getPokemonDataID(idABuscar)" shape="round" color="danger">Ver pokemon</ion-button>
-      <ion-button (click)="getPokemonDataID(idABuscar)" shape="round" color="warning" [disabled]="isDisabled1" routerLink="/pokemon">Información</ion-button>
+      <ion-button (click)="getPokemonDataID(idABuscar)" disabled="true" shape="round" color="warning" [disabled]="isDisabled1" routerLink="/pokemon">Información</ion-button>
 
     </ion-card-header>
     <ion-card-title  class="name">
 {{pokemon}}
 <img class="imagen" [src]="pokemonImg">
-
+<button [style.backgroundColor]="color" class="btn">{{tipo}}</button>
     </ion-card-title  >
   </ion-card>
 
@@ -61,6 +61,8 @@
     <ion-card-title class="name">
 {{idPokemon}}
 <img class="imagen"  [src]="pokemonImg2">
+<button [style.backgroundColor]="color2" class="btn">{{tipo2}}</button>
+
     </ion-card-title>
     
   </ion-card>
