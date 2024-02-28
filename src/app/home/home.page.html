@@ -1,79 +1,117 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monomaniac+One&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anta&family=Monomaniac+One&display=swap" rel="stylesheet">
+
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+ 
 
-  
+  <div class="background">
+<img class="back" src="https://ouch-cdn2.icons8.com/4PcNj9yX4iAg8k8stlxYCB0V6tZJ28Ym5yVw0HCX06o/rs:fit:368:202/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvNTEx/LzFiODJkYTIwLTNh/Y2UtNDY4Ni05YzY2/LWE4NTM5YzZmOGYz/MC5zdmc.png" alt="">
+</div>
+  <div class="elements">
 
-  <ion-card>
-    <ion-card-header>
-      <ion-item>
-        <ion-input label="Ingrese el id a buscar" type="number" name="id" [(ngModel)]="idABuscar"placeholder="000"></ion-input>
+
+<img class="poke" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png" alt="">
+<img class="pokem" src="https://pokemonletsgo.pokemon.com/assets/img/how-to-play/hero-img.png" alt="">
+
+<div class="info">
+<ion-label class="txt">Busca informacion sobre los pokemones y elementos mas reconocidos en la serie</ion-label>
+</div>
+
+<div class="pokemon">
+
+  <div class="infor">
+<img class="logo" src="https://cdn0.iconfinder.com/data/icons/video-games-8/24/video_game_play_pokemon_pokeball-512.png" alt="">
+<ion-label class="title">Pokemones</ion-label>
+</div>
+  <ion-card class="card">
+    <ion-card-header class="header">
+      <ion-item class="input">
+        <ion-input label="ID a buscar" shape="round" type="number" name="id" [(ngModel)]="idABuscar"placeholder="000"></ion-input>
       </ion-item>
     
-      <ion-button (click)="getPokemonDataID(idABuscar)">Ver pokemon</ion-button>
+      <ion-button (click)="getPokemonDataID(idABuscar)" shape="round" color="danger">Ver pokemon</ion-button>
+      <ion-button (click)="getPokemonDataID(idABuscar)" shape="round" color="warning" [disabled]="isDisabled1" routerLink="/pokemon">Información</ion-button>
+
     </ion-card-header>
-    <ion-card-title>
+    <ion-card-title  class="name">
 {{pokemon}}
-    </ion-card-title>
-    <img [src]="pokemonImg">
+<img class="imagen" [src]="pokemonImg">
+
+    </ion-card-title  >
   </ion-card>
 
 
   
-  <ion-card>
-    <ion-card-header>
-      <ion-item>
-        <ion-input label="Ingrese el nombre a buscar" type="text" name="nombre" [(ngModel)]="nombreABuscar"placeholder="000"></ion-input>
+  <ion-card class="card">
+    <ion-card-header  class="header">
+      <ion-item class="input">
+        <ion-input label="Nombre a buscar" shape="round"  type="text" name="nombre" [(ngModel)]="nombreABuscar"></ion-input>
       </ion-item>
     
-      <ion-button (click)="getPokemonDataName(nombreABuscar)">Ver pokemon</ion-button>
+      <ion-button (click)="getPokemonDataName(nombreABuscar)" shape="round" color="danger">Ver pokemon</ion-button>
+      <ion-button (click)="getPokemonDataID(idABuscar)" shape="round" color="warning" [disabled]="isDisabled2" routerLink="/pokemon">Información</ion-button>
+
     </ion-card-header>
-    <ion-card-title>
+    <ion-card-title class="name">
 {{idPokemon}}
+<img class="imagen"  [src]="pokemonImg2">
     </ion-card-title>
-    <img [src]="pokemonImg2">
+    
   </ion-card>
 
+</div>
 
 
-  <ion-card>
-    <ion-card-header>
-      <ion-item>
-        <ion-input label="Ingrese el id a buscar del Item" type="number" name="idI" [(ngModel)]="idABuscarItem"placeholder="000"></ion-input>
+<div class="item">
+  <div class="infor"  class="header">
+    <img src="https://images.wikidexcdn.net/mwuploads/wikidex/f/fd/latest/20230115173615/Poci%C3%B3n_EP.png" alt="">
+    <ion-label class="title">Items</ion-label>
+    </div>
+
+  <ion-card class="card">
+    <ion-card-header class="header">
+      <ion-item class="input">
+        <ion-input  label="ID a buscar del Item" shape="round"  type="number" name="idI" [(ngModel)]="idABuscarItem"placeholder="000"></ion-input>
       </ion-item>
     
-      <ion-button (click)="getItemDataId(idABuscarItem)">Ver pokemon</ion-button>
+      <ion-button (click)="getItemDataId(idABuscarItem)" shape="round" color="tertiary">Ver Item</ion-button>
+      <ion-button (click)="getPokemonDataID(idABuscar)" shape="round" color="secondary" [disabled]="isDisabled3" routerLink="/pokemon">Información</ion-button>
+
     </ion-card-header>
-    <ion-card-title>
+    <ion-card-title class="name">
 {{item}}
+<img  class="imagen" [src]="ItemImg">
     </ion-card-title>
-    <img [src]="ItemImg">
+  
   </ion-card>
 
 
 
-  <ion-card>
-    <ion-card-header>
-      <ion-item>
-        <ion-input label="Ingrese el nombre a buscar del item" type="text" name="nameI" [(ngModel)]="nombreABuscarItem"placeholder="000"></ion-input>
+  <ion-card class="card">
+    <ion-card-header  class="header">
+      <ion-item class="input">
+        <ion-input label="Nombre a buscar del item"   type="text" name="nameI" [(ngModel)]="nombreABuscarItem"></ion-input>
       </ion-item>
     
-      <ion-button (click)="getItemDataName(nombreABuscarItem)">Ver pokemon</ion-button>
+      <ion-button (click)="getItemDataName(nombreABuscarItem)" shape="round"> Ver Item</ion-button>
+      <ion-button (click)="getPokemonDataID(idABuscar)" shape="round" color="secondary" [disabled]="isDisabled4" routerLink="/pokemon">Información</ion-button>
+
     </ion-card-header>
-    <ion-card-title>
+    <ion-card-title class="name">
 {{idItem}}
+<img  class="imagen" [src]="ItemImg2">
     </ion-card-title>
-    <img [src]="ItemImg2">
+   
   </ion-card>
+
+</div>
+
+</div>
+
 </ion-content>

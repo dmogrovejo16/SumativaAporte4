@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
 import { APIServiceService } from './../Services/apiservice.service';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  isDisabled1:boolean=true;
+  isDisabled2:boolean=true;
+  isDisabled3:boolean=true;
+  isDisabled4:boolean=true;
+  pokemonName:any;
   idABuscar: number = 0;
   idABuscarItem: number = 0;
   nombreABuscar: string="";
@@ -21,7 +27,7 @@ export class HomePage {
   idItem:number | undefined;
   idPokemon:number | undefined;
 
-  constructor(private api: APIServiceService) {}
+  constructor(private api: APIServiceService, private http: HttpClient) {}
   getPokemonDataID(id: number) {
     try {
       let idABuscar;
@@ -31,7 +37,16 @@ export class HomePage {
         // Dentro de la función de éxito de la suscripción:
         // Asigna el nombre del Pokémon a la variable local 'pokemon'.
         this.pokemon = response.name;
+        this.isDisabled1=false;
+        this.pokemonName=response.name;
+        localStorage.setItem("name", this.pokemonName);
 this.pokemonImg="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + id + '.png';
+localStorage.setItem("img", this.pokemonImg);
+localStorage.setItem("id", id+"");
+localStorage.setItem("abilities", response.abilities);
+localStorage.setItem("experience", response.base_experience);
+localStorage.setItem("height", response.height);
+
         // Imprime el nombre del Pokémon en la consola.
         console.log(this.pokemon);
 
@@ -55,8 +70,17 @@ this.pokemonImg="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprite
         // Asigna el nombre del Pokémon a la variable local 'pokemon'.
         this.pokemon2 = response2.name;
         let id=response2.id;
+        this.isDisabled2=false;
        this.idPokemon=id;
+       this.pokemonName=response2.name;
+       localStorage.setItem("name", this.pokemonName);
+
 this.pokemonImg2="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + id + '.png';
+localStorage.setItem("img", this.pokemonImg2);
+localStorage.setItem("id", response2.id);
+localStorage.setItem("abilities", response2.abilities);
+localStorage.setItem("experience", response2.base_experience);
+localStorage.setItem("height", response2.height);
         // Imprime el nombre del Pokémon en la consola.
         console.log(this.pokemon);
 
@@ -80,7 +104,18 @@ this.pokemonImg2="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprit
         // Asigna el nombre del Pokémon a la variable local 'pokemon'.
         this.item = response2.name;
         let id=response2.id;
+        this.pokemonName=response2.name;
+
+        this.isDisabled3=false;      
+         localStorage.setItem("name", this.pokemonName);
+
+         localStorage.setItem("id", response2.id);
+         localStorage.setItem("abilities", response2.abilities);
+         localStorage.setItem("experience", response2.base_experience);
+         localStorage.setItem("height", response2.height);
 this.ItemImg="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/" + this.item + '.png';
+localStorage.setItem("img", this.ItemImg);
+
         // Imprime el nombre del Pokémon en la consola.
         console.log(this.item);
 
@@ -104,8 +139,18 @@ this.ItemImg="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/i
         // Asigna el nombre del Pokémon a la variable local 'pokemon'.
         this.item2 = response2.name;
         let id=response2.id;
+        this.pokemonName=response2.name;
+        localStorage.setItem("name", this.pokemonName);
+        localStorage.setItem("id", response2.id);
+
+        this.isDisabled4=false;
+
         this.idItem=id;
 this.ItemImg2="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/" + this.item2 + '.png';
+localStorage.setItem("img", this.ItemImg2);
+localStorage.setItem("abilities", response2.abilities);
+localStorage.setItem("experience", response2.base_experience);
+localStorage.setItem("height", response2.height);
         // Imprime el nombre del Pokémon en la consola.
         console.log(this.item2);
 

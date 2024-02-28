@@ -1,0 +1,39 @@
+
+.back{
+    width: 30rem;
+  }
+  
+  .background{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: -1;
+    flex-wrap: wrap;
+  }
+
+  .idd{
+    margin-left: 1rem;
+  }
+
+.img{
+    width: 40%;
+    margin-top: -3rem;
+    margin-bottom: 4rem;
+}
+
+.name{
+    margin-top: -8rem;
+    font-family: "Anta", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+  .inf{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }

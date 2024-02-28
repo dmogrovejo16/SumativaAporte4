@@ -1,0 +1,50 @@
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anta&family=Monomaniac+One&display=swap" rel="stylesheet">
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{pokemonName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="background">
+  <img class="back" src="https://cu4tromarketing.com/hs-fs/hubfs/DESARROLLO%20SITIO%20WEB/Site%202023/semicirculo1.png?width=345&height=169&name=semicirculo1.png" alt="">
+</div>
+
+<div class="inf">
+  <img [src]="img"class="img" alt="pokemon">
+  <ion-label class="name">{{pokemonName}}</ion-label>
+</div>
+
+<div class="data">
+
+  <ion-list [inset]="true">
+    <ion-item>
+      <ion-icon name="pricetag"></ion-icon>
+            <ion-label class="idd">ID: </ion-label>
+      <ion-label>{{id}} </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="text"></ion-icon>
+      <ion-label class="idd">Nombre:</ion-label>
+      <ion-label>{{pokemonName}} </ion-label>
+
+    </ion-item>
+    <ion-item>
+      <ion-icon name="trophy"></ion-icon>
+      <ion-label class="idd">Experiencia: </ion-label>
+      <ion-label>{{experience}} </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="accessibility"></ion-icon>
+      <ion-label class="idd">Height: </ion-label>
+      <ion-label>{{height}} </ion-label>
+    </ion-item>
+  </ion-list>
+
+</div>
+
+</ion-content>
