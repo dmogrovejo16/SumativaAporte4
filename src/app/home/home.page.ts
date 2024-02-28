@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { APIServiceService } from './../Services/apiservice.service';
 import { HttpClient } from '@angular/common/http';
-import { Firestore } from '@angular/fire/firestore';
+import { Firestore, doc, setDoc } from '@angular/fire/firestore';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -32,13 +32,16 @@ tipo2:any;
   pokemonImg2: string | undefined;
   idItem:number | undefined;
   idPokemon:number | undefined;
-
+rutaTabla:any;
 type:any;
 type2:any;
 
   constructor(private api: APIServiceService,private db:Firestore, private http: HttpClient) {}
 
-
+async subida(){
+  this.rutaTabla = doc(this.db,'pokemon','Pokemon');//RUTA DE TABLA EN LA BD
+  await setDoc(this.rutaTabla, { tipo: this.tipo});//CAMBIA EL ATRIBUTO DE LA TABLA
+}
   getPokemonDataID(id: number) {
     try {
       let idABuscar;
@@ -63,58 +66,93 @@ this.type=response.types[0].type.name;
 if(this.type=="fire"){
   this.color="red";
   this.tipo="fuego";
+  this.subida();
+
 }else if (this.type=="grass"){
   this.color="green";
   this.tipo="planta";
+  this.subida();
+
 }else if (this.type=="bug"){
   this.color="purple";
   this.tipo="insecto";
+  this.subida();
 
 }else if (this.type=="water"){
   this.color="blue";
   this.tipo="agua";
+  this.subida();
+
 }else if (this.type=="steel"){
   this.color="gray";
   this.tipo="hierro";
+  this.subida();
+
 }else if (this.type=="dragon"){
   this.color="orange";
   this.tipo="dragon";
+  this.subida();
+
 }else if (this.type=="fairy"){
   this.color="lightblue";
   this.tipo="hada";
+  this.subida();
+
 }else if (this.type=="ice"){
   this.color="skyblue";
   this.tipo="hielo";
+  this.subida();
+
 }else if (this.type=="fight"){
   this.color="brown";
   this.tipo="lucha";
+  this.subida();
+
 }else if (this.type=="psychic"){
   this.color="aqua";
   this.tipo="psiquico";
+  this.subida();
+
 }else if (this.type=="rock"){
   this.color="brown";
   this.tipo="piedra";
+  this.subida();
+
 }else if (this.type=="dark"){
   this.color="darkgrey";
   this.tipo="oscuro";
+  this.subida();
+
 }else if (this.type=="flying"){
   this.color="gold";
   this.tipo="volador";
+  this.subida();
+
 }else if (this.type=="poison"){
   this.color="plum";
   this.tipo="veneno";
+  this.subida();
+
 }else if (this.type=="electric"){
   this.color="yellow";
   this.tipo="electrico";
+  this.subida();
+
 }else if (this.type=="ghost"){
   this.color="white";
   this.tipo="fantasma";
+  this.subida();
+
 }else if (this.type=="normal"){
   this.color="lightcoral";
   this.tipo="normal";
+  this.subida();
+
 }else{
   this.tipo="No hay :("
   this.color="cyan";
+  this.subida();
+
 }
         // Imprime el nombre del Pokémon en la consola.
         console.log(this.pokemon);
