@@ -47,26 +47,6 @@
   </ion-card>
 
 
-  
-  <ion-card class="card">
-    <ion-card-header  class="header">
-      <ion-item class="input">
-        <ion-input label="Nombre a buscar" shape="round"  type="text" name="nombre" [(ngModel)]="nombreABuscar"></ion-input>
-      </ion-item>
-    
-      <ion-button (click)="getPokemonDataName(nombreABuscar)" shape="round" color="danger">Ver pokemon</ion-button>
-      <ion-button (click)="getPokemonDataID(idABuscar)" shape="round" color="warning" [disabled]="isDisabled2" routerLink="/pokemon">Información</ion-button>
-
-    </ion-card-header>
-    <ion-card-title class="name">
-{{idPokemon}}
-<img class="imagen"  [src]="pokemonImg2">
-<button [style.backgroundColor]="color2" class="btn">{{tipo2}}</button>
-
-    </ion-card-title>
-    
-  </ion-card>
-
 </div>
 
 
